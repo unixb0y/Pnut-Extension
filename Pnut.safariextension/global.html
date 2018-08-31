@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<title>Pnut</title>	
+<script>
+	// Set up the Listener
+	safari.application.addEventListener("command", performCommand, false);
+	
+	// Function to perform when event is received
+	function performCommand(event) {
+	    // Make sure event comes from the button
+	    if (event.command == "post") {
+		    var myurl = safari.application.activeBrowserWindow.activeTab.url; // Set current tab URL
+		    var mytitle = safari.application.activeBrowserWindow.activeTab.title; // Set current tab title
+
+	   		var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0;
+	   		if(C>A){
+	   			G=Math.round((C/2)-(A/2));
+	   		}
+
+	   		var mywin = safari.application.openBrowserWindow();
+	   		mywin.activeTab.url = ('https://beta.pnut.io/intent/post?text='+encodeURIComponent(mytitle)+'&url='+encodeURIComponent(myurl));
+	   		mywin.activeTab.resizeTo(400,400);
+
+	   		/*
+			javascript:(function(){var%20D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,W=window;if(C>A){G=Math.round((C/2)-(A/2))}W.open('https://beta.unsweets.net/intent/post?text='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(W.location),'','left='+H+',top='+G+',width='+D+',height='+A+',personalbar=0,toolbar=0,scrollbars=1,resizable=1');}());
+	   		*/
+	    }
+
+	}
+</script>
+</html>
